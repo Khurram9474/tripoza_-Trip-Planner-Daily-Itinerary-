@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_text_styles.dart';
+import '../../../../routes/app_router.dart';
 import '../../../services/presentation/providers/booking_provider.dart';
 import '../widgets/booking_card.dart';
-import 'booking_details_screen.dart';
 
 class MyBookingsScreen extends ConsumerStatefulWidget {
   const MyBookingsScreen({super.key});
@@ -83,7 +84,7 @@ class _MyBookingsScreenState extends ConsumerState<MyBookingsScreen> with Single
               ),
               const SizedBox(height: 20),
               ElevatedButton(
-                onPressed: () => Navigator.of(context).popUntil((route) => route.isFirst),
+                onPressed: () => context.go(AppRoutes.services),
                 child: const Text('Explore Services'),
               ),
             ],
@@ -99,9 +100,7 @@ class _MyBookingsScreenState extends ConsumerState<MyBookingsScreen> with Single
         final booking = bookings[index];
         return BookingCard(
           booking: booking,
-          onTap: () => Navigator.of(context).push(
-            MaterialPageRoute(builder: (_) => BookingDetailsScreen(bookingId: booking.bookingId)),
-          ),
+          onTap: () => context.push(AppRoutes.bookingDetailsPath(booking.bookingId)),
         );
       },
     );

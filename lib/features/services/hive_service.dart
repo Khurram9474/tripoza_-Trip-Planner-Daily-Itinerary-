@@ -11,6 +11,7 @@ class HiveService {
   static Box<TripModel>? _tripsBox;
   static Box<BookingModel>? _bookingsBox;
   static Box<ReviewModel>? _reviewsBox;
+  static Box? _favoritesBox;
 
   static Future<void> init() async {
     await Hive.initFlutter();
@@ -24,6 +25,7 @@ class HiveService {
     _tripsBox = await Hive.openBox<TripModel>(AppConstants.tripsBoxName);
     _bookingsBox = await Hive.openBox<BookingModel>(AppConstants.bookingsBoxName);
     _reviewsBox = await Hive.openBox<ReviewModel>(AppConstants.reviewsBoxName);
+    _favoritesBox = await Hive.openBox(AppConstants.favoritesBoxName);
   }
 
   static Box<TripModel> get tripsBox {
@@ -46,6 +48,14 @@ class HiveService {
     final box = _reviewsBox;
     if (box == null) {
       throw StateError('HiveService.init() must be called before accessing reviewsBox.');
+    }
+    return box;
+  }
+
+  static Box get favoritesBox {
+    final box = _favoritesBox;
+    if (box == null) {
+      throw StateError('HiveService.init() must be called before accessing favoritesBox.');
     }
     return box;
   }

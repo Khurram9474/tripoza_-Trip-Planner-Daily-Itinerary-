@@ -17,7 +17,10 @@ import '../features/bookings/presentation/pages/my_bookings_screen.dart';
 import '../features/bookings/presentation/pages/booking_details_screen.dart';
 import '../features/reviews/presentation/pages/reviews_screen.dart';
 import '../features/reviews/presentation/pages/write_review_screen.dart';
-
+import '../features/recommendations/presentation/pages/travel_preference_screen.dart';
+import '../features/recommendations/presentation/pages/recommendation_screen.dart';
+import '../features/recommendations/presentation/pages/travel_assistant_screen.dart';
+import '../features/recommendations/data/models/travel_preference.dart';
 class AppRoutes {
   AppRoutes._();
 
@@ -50,7 +53,10 @@ class AppRoutes {
   static String addActivityPath(String tripId) => '/trip/$tripId/add-activity';
   static String editActivityPath(String tripId, String activityId) =>
       '/trip/$tripId/activity/$activityId/edit';
-
+  // Week 7 — Smart Recommendations & Travel Assistant
+  static const preferences = '/preferences';
+  static const recommendations = '/recommendations';
+  static const travelAssistant = '/travel-assistant';
   // Week 5 path builders
   static String serviceDetailsPath(String id) => '/service/$id';
   static String bookingPath(String serviceId) => '/booking/$serviceId';
@@ -218,6 +224,22 @@ final appRouter = GoRouter(
         final serviceName = state.uri.queryParameters['name'] ?? '';
         return _buildPage(WriteReviewScreen(serviceId: serviceId, serviceName: serviceName));
       },
+    ),
+    // ---------------- Week 7 — Smart Recommendations & Assistant ----------------
+    GoRoute(
+      path: AppRoutes.preferences,
+      pageBuilder: (context, state) => _buildPage(const TravelPreferenceScreen()),
+    ),
+    GoRoute(
+      path: AppRoutes.recommendations,
+      pageBuilder: (context, state) {
+        final preference = state.extra as TravelPreference;
+        return _buildPage(RecommendationScreen(preference: preference));
+      },
+    ),
+    GoRoute(
+      path: AppRoutes.travelAssistant,
+      pageBuilder: (context, state) => _buildPage(const TravelAssistantScreen()),
     ),
   ],
 );
