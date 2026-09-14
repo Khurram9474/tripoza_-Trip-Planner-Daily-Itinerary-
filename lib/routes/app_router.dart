@@ -15,6 +15,8 @@ import '../features/services/presentation/pages/service_details_screen.dart';
 import '../features/bookings/presentation/pages/booking_confirmation_screen.dart';
 import '../features/bookings/presentation/pages/my_bookings_screen.dart';
 import '../features/bookings/presentation/pages/booking_details_screen.dart';
+import '../features/reviews/presentation/pages/reviews_screen.dart';
+import '../features/reviews/presentation/pages/write_review_screen.dart';
 
 class AppRoutes {
   AppRoutes._();
@@ -38,6 +40,10 @@ class AppRoutes {
   static const myBookings = '/my-bookings';
   static const bookingDetails = '/booking-details/:bookingId';
 
+  // Week 6 — Reviews & Ratings
+  static const reviews = '/reviews/:serviceId';
+  static const writeReview = '/write-review/:serviceId';
+
   static String editTripPath(String tripId) => '/edit-trip/$tripId';
   static String tripDetailsPath(String tripId) => '/trip/$tripId';
   static String itineraryPath(String tripId) => '/trip/$tripId/itinerary';
@@ -50,6 +56,12 @@ class AppRoutes {
   static String bookingPath(String serviceId) => '/booking/$serviceId';
   static String bookingConfirmationPath(String bookingId) => '/booking-confirmation/$bookingId';
   static String bookingDetailsPath(String bookingId) => '/booking-details/$bookingId';
+
+  // Week 6 path builders
+  static String reviewsPath(String serviceId, String serviceName) =>
+      '/reviews/$serviceId?name=${Uri.encodeComponent(serviceName)}';
+  static String writeReviewPath(String serviceId, String serviceName) =>
+      '/write-review/$serviceId?name=${Uri.encodeComponent(serviceName)}';
 }
 
 /// Shared fade+slide transition for all routes except the splash screen.
@@ -187,6 +199,24 @@ final appRouter = GoRouter(
       pageBuilder: (context, state) {
         final bookingId = state.pathParameters['bookingId']!;
         return _buildPage(BookingDetailsScreen(bookingId: bookingId));
+      },
+    ),
+
+    // ---------------- Week 6 — Reviews & Ratings ----------------
+    GoRoute(
+      path: AppRoutes.reviews,
+      pageBuilder: (context, state) {
+        final serviceId = state.pathParameters['serviceId']!;
+        final serviceName = state.uri.queryParameters['name'] ?? '';
+        return _buildPage(ReviewsScreen(serviceId: serviceId, serviceName: serviceName));
+      },
+    ),
+    GoRoute(
+      path: AppRoutes.writeReview,
+      pageBuilder: (context, state) {
+        final serviceId = state.pathParameters['serviceId']!;
+        final serviceName = state.uri.queryParameters['name'] ?? '';
+        return _buildPage(WriteReviewScreen(serviceId: serviceId, serviceName: serviceName));
       },
     ),
   ],

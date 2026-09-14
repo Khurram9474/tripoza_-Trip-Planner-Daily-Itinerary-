@@ -1,0 +1,66 @@
+import 'package:tripora/features/reviews/data/models/review_model.dart';
+
+import 'review_model.dart';
+
+final List<ReviewModel> mockReviews = [
+  ReviewModel(
+    id: 'rev_1',
+    serviceId: 'svc_h1',
+    serviceName: 'Serena Mountain Resort',
+    userName: 'Ayesha Khan',
+    rating: 5,
+    reviewText: 'Amazing experience! The hotel was clean and the staff were very helpful. Views were breathtaking every morning.',
+    createdAt: DateTime(2026, 8, 12),
+    helpfulCount: 24,
+  ),
+  ReviewModel(
+    id: 'rev_2',
+    serviceId: 'svc_h1',
+    serviceName: 'Serena Mountain Resort',
+    userName: 'Bilal Ahmed',
+    rating: 4,
+    reviewText: 'Great location and friendly staff. Breakfast could have had more variety, but overall a solid stay.',
+    createdAt: DateTime(2026, 7, 28),
+    helpfulCount: 11,
+  ),
+  ReviewModel(
+    id: 'rev_3',
+    serviceId: 'svc_h1',
+    serviceName: 'Serena Mountain Resort',
+    userName: 'Sana Malik',
+    rating: 3,
+    reviewText: 'Decent stay but the wifi was patchy in our room. Staff were responsive when we asked though.',
+    createdAt: DateTime(2026, 7, 10),
+    helpfulCount: 5,
+  ),
+  ReviewModel(
+    id: 'rev_4',
+    serviceId: 'svc_t1',
+    serviceName: 'Hunza Valley Explorer',
+    userName: 'Hamza Raza',
+    rating: 5,
+    reviewText: 'Best tour I have ever been on. Our guide knew every corner of the valley and the itinerary was well paced.',
+    createdAt: DateTime(2026, 8, 20),
+    helpfulCount: 31,
+  ),
+  ReviewModel(
+    id: 'rev_5',
+    serviceId: 'svc_t1',
+    serviceName: 'Hunza Valley Explorer',
+    userName: 'Fatima Noor',
+    rating: 4,
+    reviewText: 'Beautiful scenery and well organized. Meals were simple but tasty.',
+    createdAt: DateTime(2026, 8, 5),
+    helpfulCount: 9,
+  ),
+  ReviewModel(
+    id: 'rev_6',
+    serviceId: 'svc_a1',
+    serviceName: 'Attabad Lake Adventure',
+    userName: 'Usman Tariq',
+    rating: 2,
+    reviewText: 'Jet ski was fun but we waited over an hour for our turn. Needs better scheduling.',
+    createdAt: DateTime(2026, 7, 15),
+    helpfulCount: 7,
+  ),
+];

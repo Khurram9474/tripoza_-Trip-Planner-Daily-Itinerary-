@@ -4,7 +4,7 @@ class AppConstants {
   static const String bookingsBoxName = 'bookingsBox';  // ← 1. FIXED casing here (was 'bookings_box')
   static const String appName = 'Tripora';
   static const String appTagline = 'Plan. Explore. Book. Remember.';  // ← 2. FIXED text here (was missing "Book.")
-
+  static const String reviewsBoxName = 'reviewsBox';
   // Hive box names (used in Phase 5)
   static const String tripsBoxName = 'tripsBox';
 

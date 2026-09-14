@@ -40,4 +40,21 @@ class Validators {
     }
     return null;
   }
+
+  static String? reviewText(String? value) {
+    if (value == null || value.trim().isEmpty) {
+      return 'Please write a review before submitting.';
+    }
+    if (value.trim().length < 10) {
+      return 'Your review is too short. Please share a bit more detail.';
+    }
+    return null;
+  }
+
+  static String? reviewerName(String? value) {
+    if (value == null || value.trim().isEmpty) {
+      return 'Please enter your name.';
+    }
+    return null;
+  }
 }
