@@ -53,6 +53,45 @@ class HomeScreen extends ConsumerWidget {
             ),
             const SizedBox(height: 24),
 
+            // ---------- NEW: Week 5 Travel Services section ----------
+            Container(
+              padding: const EdgeInsets.all(20),
+              decoration: BoxDecoration(
+                color: AppColors.primary,
+                borderRadius: BorderRadius.circular(16),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Where are you going?',
+                    style: AppTextStyles.sectionHeading.copyWith(color: AppColors.textOnPrimary),
+                  ),
+                  const SizedBox(height: 6),
+                  Text(
+                    'Find services for your next trip',
+                    style: AppTextStyles.bodySmall.copyWith(
+                      color: AppColors.textOnPrimary.withValues(alpha: 0.85),
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  AppButton(
+                    label: 'Explore Services',
+                    icon: Icons.travel_explore_outlined,
+                    onPressed: () => context.push(AppRoutes.services),
+                  ),
+                  const SizedBox(height: 10),
+                  AppButton(
+                    label: 'My Bookings',
+                    outlined: true,
+                    onPressed: () => context.push(AppRoutes.myBookings),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 24),
+            // ---------- END Week 5 section ----------
+
             Text('Quick Actions', style: AppTextStyles.sectionHeading),
             const SizedBox(height: 10),
             AppButton(
